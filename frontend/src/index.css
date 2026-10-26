@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f7f8fa;
+  --bg-surface: #ffffff;
+  --bg-surface-soft: #f4f6f8;
+  --primary: #a3162a;
+  --primary-soft: rgba(163, 22, 42, 0.1);
+  --primary-strong: #821226;
+  --secondary: #be2439;
+  --success: #16a34a;
+  --warning: #d97706;
+  --critical: #991b1b;
+  --text: #111827;
+  --muted: #4b5563;
+  --line: #e4e7eb;
+}
+
+@layer base {
+  body {
+    @apply min-h-screen overflow-x-hidden font-sans antialiased;
+    background: #f7f8fa;
+    color: var(--text);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Custom modern SOC scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #e4e7eb;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(163, 22, 42, 0.9), rgba(190, 36, 57, 0.8));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(130, 18, 38, 1), rgba(163, 22, 42, 0.9));
+}
+
+/* SOC Card Styles */
+.soc-card {
+  @apply rounded-lg border border-slate-200 bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)];
+}
+
+.soc-card-hover {
+  @apply soc-card transition-all duration-200 hover:-translate-y-0.5 hover:border-red-200 hover:shadow-[0_12px_24px_rgba(15,23,42,0.08)];
+}
+
+.soc-panel-glow {
+  box-shadow: 0 0 0 1px rgba(163, 22, 42, 0.08), 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+.ai-panel {
+  @apply soc-card soc-panel-glow border-slate-200 bg-white;
+}
+
+/* Badge styles */
+.badge-low {
+  @apply border border-emerald-500/20 bg-emerald-500/10 text-emerald-300;
+}
+.badge-medium {
+  @apply border border-amber-500/20 bg-amber-500/10 text-amber-300;
+}
+.badge-high {
+  @apply border border-orange-500/20 bg-orange-500/10 text-orange-300;
+}
+.badge-critical {
+  @apply border border-red-500/30 bg-red-500/15 text-red-300 animate-pulse;
+}
+
+/* Convert legacy dark page surfaces into the uploaded white admin-dashboard workspace. */
+.workspace-surface [class*="bg-[#111827]"],
+.workspace-surface [class*="bg-slate-950"] {
+  background-color: #ffffff !important;
+}
+
+.workspace-surface [class*="bg-[#0b0f17]"],
+.workspace-surface [class*="bg-slate-900"] {
+  background-color: #f4f6f8 !important;
+}
+
+.workspace-surface [class*="bg-slate-800"] {
+  background-color: #eef0f3 !important;
+}
+
+.workspace-surface [class*="border-[#1f293d]"],
+.workspace-surface [class*="border-slate-700"] {
+  border-color: #e1e5ea !important;
+}
+
+.workspace-surface [class*="divide-[#1f293d]"] {
+  --tw-divide-opacity: 1;
+  border-color: #e7e9ed !important;
+}
+
+.workspace-surface [class*="text-white"],
+.workspace-surface [class*="text-slate-100"],
+.workspace-surface [class*="text-slate-200"],
+.workspace-surface [class*="text-slate-300"] {
+  color: #202938 !important;
+}
+
+.workspace-surface [class*="text-slate-400"],
+.workspace-surface [class*="text-slate-500"] {
+  color: #4b5563 !important;
+}
+
+.workspace-surface [class*="text-cyan-"],
+.workspace-surface [class*="text-blue-"],
+.workspace-surface [class*="text-violet-"] {
+  color: #a3162a !important;
+}
+
+.workspace-surface [class*="bg-cyan-"],
+.workspace-surface [class*="bg-blue-"],
+.workspace-surface [class*="bg-violet-"] {
+  background-color: #fbf0f2 !important;
+}
+
+.workspace-surface [class*="border-cyan-"],
+.workspace-surface [class*="border-blue-"],
+.workspace-surface [class*="border-violet-"] {
+  border-color: #edc5cc !important;
+}
+
+.workspace-surface button[class*="bg-red-500"][class*="text-white"],
+.workspace-surface button[class*="bg-red-700"][class*="text-white"],
+.workspace-surface button[class*="bg-emerald-500"][class*="text-white"] {
+  color: #ffffff !important;
+}
+
+.workspace-surface button,
+.workspace-surface select,
+.workspace-surface input,
+.workspace-surface textarea {
+  transition: border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.workspace-surface button:focus-visible,
+.workspace-surface select:focus-visible,
+.workspace-surface input:focus-visible,
+.workspace-surface textarea:focus-visible {
+  outline: 2px solid #a3162a;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Subtle glowing pulse */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.45; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2.5s infinite ease-in-out;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}

@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# JavaScript
+frontend/node_modules/
+frontend/dist/
+**/node_modules/
+
+# Generated build and tool state
+.codex-build/
+.sf/
+
+# Large local source datasets
+data/raw/*.csv
+
+# Runtime data and trained artifacts
+data/processed/*
+!data/processed/.gitkeep
+data/artifacts/*
+!data/artifacts/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Editor and OS
+.vscode/
+.idea/
+Thumbs.db
